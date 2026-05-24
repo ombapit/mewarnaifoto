@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"c:\\\\data_dave\\\\work\\\\alone\\\\david\\\\game\\\\mewarnai\\\\backend\")",
+      "Bash(mkdir -p \"c:\\\\data_dave\\\\work\\\\alone\\\\david\\\\game\\\\mewarnai\\\\godot\\\\scenes\")",
+      "Bash(mkdir -p \"c:\\\\data_dave\\\\work\\\\alone\\\\david\\\\game\\\\mewarnai\\\\godot\\\\scripts\")",
+      "Bash(mkdir -p \"c:\\\\data_dave\\\\work\\\\alone\\\\david\\\\game\\\\mewarnai\\\\godot\\\\assets\\\\stickers\")",
+      "Bash(mkdir -p \"c:\\\\data_dave\\\\work\\\\alone\\\\david\\\\game\\\\mewarnai\\\\godot\\\\assets\\\\fonts\")"
+    ]
+  }
+}

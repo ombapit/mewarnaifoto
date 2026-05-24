@@ -1,0 +1,134 @@
+[gd_scene load_steps=6 format=3 uid="uid://coloring"]
+
+[ext_resource type="Script" path="res://scripts/Coloring.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/KidButton.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/BrushSizePicker.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/ToolButton.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/AnimatedBackground.gd" id="5"]
+
+[node name="Coloring" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Background" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("5")
+base_color = Color(1, 0.96, 0.86, 1)
+count = 10
+
+[node name="CanvasArea" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.56
+mouse_filter = 2
+
+[node name="ColorLayer" type="TextureRect" parent="CanvasArea"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+
+[node name="SketchLayer" type="TextureRect" parent="CanvasArea"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand_mode = 1
+stretch_mode = 5
+mouse_filter = 2
+
+[node name="BottomPanel" type="VBoxContainer" parent="."]
+anchor_top = 0.56
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+theme_override_constants/separation = 10
+
+[node name="CrayonTray" type="ScrollContainer" parent="BottomPanel"]
+custom_minimum_size = Vector2(0, 200)
+horizontal_scroll_mode = 1
+vertical_scroll_mode = 0
+
+[node name="Crayons" type="HBoxContainer" parent="BottomPanel/CrayonTray"]
+theme_override_constants/separation = 4
+
+[node name="MidRow" type="HBoxContainer" parent="BottomPanel"]
+custom_minimum_size = Vector2(0, 120)
+theme_override_constants/separation = 16
+
+[node name="SizeBox" type="VBoxContainer" parent="BottomPanel/MidRow"]
+theme_override_constants/separation = 2
+
+[node name="SizeLabel" type="Label" parent="BottomPanel/MidRow/SizeBox"]
+text = "Ukuran"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.4, 0.4, 0.45, 1)
+
+[node name="BrushSize" type="Control" parent="BottomPanel/MidRow/SizeBox"]
+custom_minimum_size = Vector2(150, 64)
+size_flags_vertical = 3
+script = ExtResource("3")
+
+[node name="Spacer" type="Control" parent="BottomPanel/MidRow"]
+size_flags_horizontal = 3
+
+[node name="ColorBox" type="VBoxContainer" parent="BottomPanel/MidRow"]
+theme_override_constants/separation = 2
+
+[node name="ColorLabel" type="Label" parent="BottomPanel/MidRow/ColorBox"]
+text = "Warna"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.4, 0.4, 0.45, 1)
+
+[node name="ColorPickerBtn" type="ColorPickerButton" parent="BottomPanel/MidRow/ColorBox"]
+custom_minimum_size = Vector2(96, 90)
+size_flags_vertical = 3
+
+[node name="Actions" type="GridContainer" parent="BottomPanel"]
+custom_minimum_size = Vector2(0, 150)
+size_flags_vertical = 3
+columns = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+
+[node name="BtnBack" type="Button" parent="BottomPanel/Actions"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4")
+base_color = Color(1, 0.62, 0.62, 1)
+icon_text = "←"
+label_text = "Kembali"
+
+[node name="BtnUndo" type="Button" parent="BottomPanel/Actions"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+disabled = true
+script = ExtResource("4")
+base_color = Color(1, 0.85, 0.24, 1)
+icon_text = "↩"
+label_text = "Ulangi"
+
+[node name="BtnPreview" type="Button" parent="BottomPanel/Actions"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4")
+base_color = Color(0.78, 0.5, 0.98, 1)
+icon_text = "👁"
+label_text = "Lihat"
+
+[node name="BtnSave" type="Button" parent="BottomPanel/Actions"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4")
+base_color = Color(0.42, 0.8, 0.47, 1)
+icon_text = "💾"
+label_text = "Simpan"
+
+[node name="AutosaveTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = false

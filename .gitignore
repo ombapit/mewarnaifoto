@@ -1,0 +1,27 @@
+# --- Keystore & secrets ---
+*.keystore
+*.jks
+*.keystore.txt
+keystore_credentials*
+
+# --- Python backend ---
+backend/.venv/
+__pycache__/
+*.pyc
+backend/test.jpg
+backend/test_sketch.png
+
+# --- Godot ---
+godot/.godot/
+godot/android/build/
+godot/export_presets.cfg
+*.translation
+
+# --- Build output ---
+*.apk
+*.aab
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+desktop.ini
