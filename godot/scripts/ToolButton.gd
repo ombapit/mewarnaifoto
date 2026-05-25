@@ -4,6 +4,13 @@ class_name ToolButton
 @export var icon_text: String = "★"
 @export var label_text: String = ""
 
+var _icon_label: Label = null
+
+
+func set_icon(t: String) -> void:
+	if _icon_label:
+		_icon_label.text = t
+
 
 func _ready() -> void:
 	super._ready()
@@ -19,6 +26,7 @@ func _ready() -> void:
 	ic.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	ic.add_theme_font_size_override("font_size", 58)
 	ic.add_theme_color_override("font_color", Color.WHITE)
+	_icon_label = ic
 
 	var lb := Label.new()
 	lb.text = label_text

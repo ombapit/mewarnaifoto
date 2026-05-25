@@ -16,7 +16,8 @@ var _lift: float = 0.0
 func setup(c: Color) -> void:
 	color = c
 	custom_minimum_size = Vector2(CRAYON_W + 14, CRAYON_H + LIFT + 12)
-	mouse_filter = Control.MOUSE_FILTER_STOP
+	# PASS: terima klik tapi event tetap diteruskan ke ScrollContainer (biar bisa di-scroll)
+	mouse_filter = Control.MOUSE_FILTER_PASS
 	queue_redraw()
 
 
@@ -41,7 +42,6 @@ func _gui_input(event: InputEvent) -> void:
 		hit = true
 	if hit:
 		emit_signal("selected", self)
-		accept_event()
 
 
 func _draw() -> void:

@@ -1,7 +1,7 @@
 extends Node
 
 const UUID_PATH = "user://uuid.dat"
-const API_BASE_URL_DEFAULT = "http://192.168.100.49:8000"
+const API_BASE_URL_DEFAULT = "https://mewarnaifoto.davidsuwandi.my.id"
 
 var user_uuid: String = ""
 var api_base_url: String = API_BASE_URL_DEFAULT

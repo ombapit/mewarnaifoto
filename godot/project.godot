@@ -25,6 +25,7 @@ config/icon="res://icon.svg"
 GlobalConfig="*res://scripts/GlobalConfig.gd"
 SaveManager="*res://scripts/SaveManager.gd"
 MusicPlayer="*res://scripts/MusicPlayer.gd"
+AdsManager="*res://scripts/AdsManager.gd"
 
 [display]
 
@@ -38,7 +39,7 @@ window/handheld/orientation="portrait"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/GodotGetImage/plugin.cfg")
+enabled=PackedStringArray("res://addons/GodotGetImage/plugin.cfg", "res://addons/admob/plugin.cfg")
 
 [input]
 

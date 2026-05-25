@@ -180,8 +180,20 @@ func _show_preview(data: PackedByteArray) -> void:
 	img.load_jpg_from_buffer(data)
 	if img.is_empty():
 		img.load_png_from_buffer(data)
+	if img.is_empty():
+		return
+	# Downscale untuk preview — foto full-res bisa lampaui batas tekstur GPU (gl_compatibility) → hitam
+	var max_side := 720
+	var w := img.get_width()
+	var h := img.get_height()
+	if max(w, h) > max_side:
+		var s := float(max_side) / float(max(w, h))
+		img.resize(int(w * s), int(h * s), Image.INTERPOLATE_BILINEAR)
+	# Paksa format uncompressed standar (gl_compatibility kadang gelap kalau format lain)
+	img.convert(Image.FORMAT_RGB8)
 	var tex := ImageTexture.create_from_image(img)
 	preview_image.texture = tex
+	print("[Preview] tex %dx%d fmt=%d" % [img.get_width(), img.get_height(), img.get_format()])
 
 
 func _on_process_pressed() -> void:
@@ -207,9 +219,11 @@ func _send_to_api() -> void:
 
 	var headers := [
 		"Content-Type: multipart/form-data; boundary=%s" % boundary,
-		"Content-Length: %d" % body.size(),
 	]
-	http.request_raw(url, headers, HTTPClient.METHOD_POST, body)
+	var err := http.request_raw(url, headers, HTTPClient.METHOD_POST, body)
+	if err != OK:
+		btn_process.disabled = false
+		_set_status("Gagal kirim request (err %d)." % err)
 
 
 func _on_request_completed(result: int, response_code: int, _headers: PackedStringArray, body: PackedByteArray) -> void:

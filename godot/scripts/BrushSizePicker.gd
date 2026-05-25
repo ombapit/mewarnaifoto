@@ -3,7 +3,7 @@ class_name BrushSizePicker
 
 signal size_selected(index: int)
 
-const DOT := [16.0, 28.0, 42.0]   # diameter titik (visual)
+const DOT := [12.0, 22.0, 32.0, 44.0, 56.0]   # diameter titik (visual)
 const ACCENT := Color(0.2, 0.5, 1.0)
 const GRAY := Color(0.62, 0.62, 0.66)
 
@@ -14,7 +14,7 @@ var _count: int = 3
 func setup(count: int, current: int) -> void:
 	_count = count
 	active = current
-	custom_minimum_size = Vector2(210, 90)
+	custom_minimum_size = Vector2(330, 90)
 	mouse_filter = Control.MOUSE_FILTER_STOP
 	queue_redraw()
 

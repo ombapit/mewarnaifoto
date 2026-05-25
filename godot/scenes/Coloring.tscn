@@ -20,18 +20,24 @@ base_color = Color(1, 0.96, 0.86, 1)
 count = 10
 
 [node name="CanvasArea" type="Control" parent="."]
+clip_contents = true
 anchor_right = 1.0
 anchor_bottom = 0.56
 mouse_filter = 2
 
-[node name="ColorLayer" type="TextureRect" parent="CanvasArea"]
+[node name="CanvasContent" type="Control" parent="CanvasArea"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="ColorLayer" type="TextureRect" parent="CanvasArea/CanvasContent"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 expand_mode = 1
 stretch_mode = 5
 mouse_filter = 2
 
-[node name="SketchLayer" type="TextureRect" parent="CanvasArea"]
+[node name="SketchLayer" type="TextureRect" parent="CanvasArea/CanvasContent"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 expand_mode = 1
@@ -72,6 +78,30 @@ theme_override_colors/font_color = Color(0.4, 0.4, 0.45, 1)
 custom_minimum_size = Vector2(150, 64)
 size_flags_vertical = 3
 script = ExtResource("3")
+
+[node name="BtnEraser" type="Button" parent="BottomPanel/MidRow"]
+custom_minimum_size = Vector2(140, 0)
+size_flags_vertical = 3
+script = ExtResource("4")
+base_color = Color(0.85, 0.55, 0.55, 1)
+icon_text = "🧽"
+label_text = "Hapus"
+
+[node name="BtnPan" type="Button" parent="BottomPanel/MidRow"]
+custom_minimum_size = Vector2(140, 0)
+size_flags_vertical = 3
+script = ExtResource("4")
+base_color = Color(0.45, 0.6, 0.75, 1)
+icon_text = "✋"
+label_text = "Geser"
+
+[node name="BtnStamp" type="Button" parent="BottomPanel/MidRow"]
+custom_minimum_size = Vector2(140, 0)
+size_flags_vertical = 3
+script = ExtResource("4")
+base_color = Color(0.95, 0.7, 0.25, 1)
+icon_text = "★"
+label_text = "Stempel"
 
 [node name="Spacer" type="Control" parent="BottomPanel/MidRow"]
 size_flags_horizontal = 3

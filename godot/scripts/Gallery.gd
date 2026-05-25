@@ -19,6 +19,7 @@ func _ready() -> void:
 	fs_share.pressed.connect(_on_share)
 	fs_delete.pressed.connect(_on_delete)
 	fullscreen_overlay.visible = false
+	AdsManager.hide_banner()
 	_load_grid()
 
 
